@@ -14,6 +14,6 @@ return [
     */
 
     'failed' => 'Проверьте введённые данные.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'throttle' => 'Слишком много попыток авторизации, попробуйте через :seconds seconds.',
 
 ];

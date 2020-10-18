@@ -8,9 +8,9 @@
                 <div class="card-header">Privet</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('error'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('error') }}
                         </div>
                     @endif
                     Вы вошли!

@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bathroom extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+    ];
 }

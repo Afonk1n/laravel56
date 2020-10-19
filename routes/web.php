@@ -10,13 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/apartments', 'ApartmentController@apartment')->name('apartment');
+
+Route::get('/about', 'AboutController@About')->name('about');
+
+Route::get('/admin', 'AdminController@admin')->middleware('checkrole');
+
+Route::get('/editor', 'EditorController@editor')->middleware('checkroleeditor');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/admin','AdminController@admin')->middleware('checkrole');

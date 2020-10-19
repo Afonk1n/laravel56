@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Middleware;
-use Illuminate\Support\Facades\Auth;
-use Closure;
 
-class CheckRole
+use Closure;
+use Illuminate\Support\Facades\Auth;
+
+class CheckRoleEditor
 {
     /**
      * Handle an incoming request.
@@ -16,7 +17,7 @@ class CheckRole
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            if (auth()->user()->role == 2) {
+            if (auth()->user()->role > 0) {
                 return $next($request);
             }
         }

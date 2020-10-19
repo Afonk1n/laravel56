@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -41,39 +40,23 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('home') }}">{{ __('Главная') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('apartment') }}">{{ __('Квартиры') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('about') }}">{{ __('О нас') }}</a>
-                    </li>
-                    @auth
-                        @if(Auth::user()->role > 0)
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="/editor">Редактор</a>
-                            </li>
-                        @endif
-                    @endauth
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Войти') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="{{ route('register') }}">{{ __('Зарегистрироваться') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Выйти') }}
+                                    {{ __('Logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -91,5 +74,56 @@
         @yield('content')
     </main>
 </div>
+</body>
+</html>
+
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <a class="my-0 mr-md-auto font-weight-normal navbar-brand" href="{{ url('/') }}">Aroom</a>
+
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="{{ route('home') }}">Главная</a>
+        <a class="p-2 text-dark" href="{{ route('apartment') }}">Квартиры</a>
+        <a class="p-2 text-dark" href="{{ route('about') }}">О нас</a>
+        @auth
+            @if(Auth::user()->role > 0)
+                <a class="p-2 text-dark" href="/editor">Редактор</a>
+            @endif
+        @endauth
+        @guest
+            <a class="p-2 text-dark" href="{{ route('login') }}">Войти</a>
+            <a class="p-2 text-dark" href="{{ route('register') }}">Зарегистрироваться</a>
+        @else
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+        @endguest
+    </nav>
+</div>
+<div class="container">
+    @yield('content')
+</div>
+
 </body>
 </html>

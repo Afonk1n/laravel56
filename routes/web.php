@@ -16,9 +16,11 @@ Route::get('/apartments', 'ApartmentController@apartment')->name('apartment');
 
 Route::get('/about', 'AboutController@About')->name('about');
 
+Route::get('/editor', 'EditorController@editor')->middleware('checkroleeditor');
+
 Route::get('/admin', 'AdminController@admin')->middleware('checkrole');
 
-Route::get('/editor', 'EditorController@editor')->middleware('checkroleeditor');
+route::resource('bathrooms','BathroomController')->middleware('checkrole');
 
 Auth::routes();
 

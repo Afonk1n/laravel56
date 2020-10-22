@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Storeynumber extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'name',
     ];

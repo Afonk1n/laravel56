@@ -12,7 +12,7 @@
 */
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/apartments', 'ApartmentController@apartment')->name('apartment');
+/*Route::get('/apartments', 'ApartmentController@apartment')->name('apartment');*/
 
 Route::get('/about', 'AboutController@About')->name('about');
 
@@ -37,6 +37,8 @@ Route::resource('services', 'ServiceController')->middleware('checkrole');
 Route::resource('statuses', 'StatusController')->middleware('checkrole');
 
 Route::resource('storeynumbers', 'StoreynumberController')->middleware('checkrole');
+
+Route::resource('apartments', 'ApartmentController')->middleware('checkroleeditor');
 
 Auth::routes();
 

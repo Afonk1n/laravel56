@@ -13,4 +13,8 @@ class Apartment extends Model
     protected $fillable = [
         'area', 'number', 'storey', 'specification', 'additional', 'sold', 'image',
     ];
+
+    /*public function room(){
+        return $this->hasOne('App\room', 'id','room_id');
+    }*/
 }

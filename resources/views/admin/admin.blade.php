@@ -21,7 +21,8 @@
                             <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Санитарные узлы</a></div>
                             <div class="item m-2"><a href="/services" class="btn btn-dark w-25">Сервисы</a></div>
                             <div class="item m-2"><a href="/statuses" class="btn btn-dark w-25">Статусы</a></div>
-
+                            <div class="item m-2"><a href="/apartments" class="btn btn-dark w-25">Квартиры</a></div>
+                            <div class="item m-2"><a href="/contracts" class="btn btn-dark w-25">Контракты</a></div>
                     </div>
                 </div>
             </div>

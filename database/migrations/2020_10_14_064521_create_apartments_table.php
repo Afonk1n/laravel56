@@ -21,7 +21,7 @@ class CreateApartmentsTable extends Migration
             $table->string('specification',300);
             $table->string('additional', 300);
             $table->tinyInteger('sold')->default(0);
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('room_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->integer('street_id')->unsigned();

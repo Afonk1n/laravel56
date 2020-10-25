@@ -44,7 +44,7 @@
                         <a class="nav-link text-dark" href="{{ route('home') }}">{{ __('Главная') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('apartment') }}">{{ __('Квартиры') }}</a>
+                        <a class="nav-link text-dark" href="#">{{ __('Квартиры') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="{{ route('about') }}">{{ __('О нас') }}</a>

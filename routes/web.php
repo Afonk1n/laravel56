@@ -16,11 +16,27 @@ Route::get('/apartments', 'ApartmentController@apartment')->name('apartment');
 
 Route::get('/about', 'AboutController@About')->name('about');
 
-Route::get('/editor', 'EditorController@editor')->middleware('checkroleeditor');
+Route::get('/editor', 'EditorController@editor')->middleware('checkroleeditor')->name('editor');
 
 Route::get('/admin', 'AdminController@admin')->middleware('checkrole');
 
-route::resource('bathrooms','BathroomController')->middleware('checkrole');
+Route::resource('bathrooms','BathroomController')->middleware('checkrole');
+
+Route::resource('districts', 'DistrictController')->middleware('checkrole');
+
+Route::resource('streets', 'StreetController')->middleware('checkrole');
+
+Route::resource('layouts', 'LayoutController')->middleware('checkrole');
+
+Route::resource('renovations', 'RenovationController')->middleware('checkrole');
+
+Route::resource('rooms', 'RoomController')->middleware('checkrole');
+
+Route::resource('services', 'ServiceController')->middleware('checkrole');
+
+Route::resource('statuses', 'StatusController')->middleware('checkrole');
+
+Route::resource('storeynumbers', 'StoreynumberController')->middleware('checkrole');
 
 Auth::routes();
 

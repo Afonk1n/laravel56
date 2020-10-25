@@ -1,4 +1,4 @@
-@extends('admin.layouts.adminlayout')
+@extends('admin.header.adminlayout')
 
 @section('content')
     <div class="container">
@@ -15,8 +15,8 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <td>ID</td>
-                                    <td>Name</td>
+                                    <td>№</td>
+                                    <td>Имя</td>
                                     <td></td>
                                     <td></td>
                                 </tr>

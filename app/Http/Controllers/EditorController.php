@@ -8,6 +8,6 @@ class EditorController extends Controller
 {
     public function editor()
     {
-        return view('editor');
+        return view('editor/editor');
     }
 }

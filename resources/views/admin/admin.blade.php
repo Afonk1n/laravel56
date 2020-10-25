@@ -1,4 +1,4 @@
-@extends('admin.layouts.adminlayout')
+@extends('admin.header.adminlayout')
 
 @section('content')
     <div class="container">
@@ -12,15 +12,15 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                            <div class="item m-2"><a href="/districts" class="btn btn-dark w-25">Районы</a></div>
+                            <div class="item m-2"><a href="/streets" class="btn btn-dark w-25">Улицы</a></div>
+                            <div class="item m-2"><a href="/renovations" class="btn btn-dark w-25">Ремонты</a></div>
+                            <div class="item m-2"><a href="/layouts" class="btn btn-dark w-25">Планировки</a></div>
+                            <div class="item m-2"><a href="/rooms" class="btn btn-dark w-25">Комнатности</a></div>
+                            <div class="item m-2"><a href="/storeynumbers" class="btn btn-dark w-25">Этажности</a></div>
                             <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Санитарные узлы</a></div>
-                            <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Районы</a></div>
-                            <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Улицы</a></div>
-                            <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Ремонты</a></div>
-                            <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Планировки</a></div>
-                            <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Комнатности</a></div>
-                            <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Этажности</a></div>
-                            <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Сервисы</a></div>
-                            <div class="item m-2"><a href="/bathrooms" class="btn btn-dark w-25">Статусы</a></div>
+                            <div class="item m-2"><a href="/services" class="btn btn-dark w-25">Сервисы</a></div>
+                            <div class="item m-2"><a href="/statuses" class="btn btn-dark w-25">Статусы</a></div>
 
                     </div>
                 </div>

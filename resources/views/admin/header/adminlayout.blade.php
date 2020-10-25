@@ -52,7 +52,7 @@
                     @auth
                         @if(Auth::user()->role > 0)
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="/editor">Редактор</a>
+                                <a class="nav-link text-dark" href="{{ route('editor') }}">Редактор</a>
                             </li>
                         @endif
                     @endauth

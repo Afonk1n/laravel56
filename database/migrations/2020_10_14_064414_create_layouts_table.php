@@ -13,7 +13,7 @@ class CreateLayoutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('layouts', function (Blueprint $table) {
+        Schema::create('header', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 45);
         });
@@ -26,6 +26,6 @@ class CreateLayoutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('layouts');
+        Schema::dropIfExists('header');
     }
 }

@@ -29,7 +29,7 @@ class CreateApartmentsTable extends Migration
             $table->integer('storeynumber_id')->unsigned();
             $table->foreign('storeynumber_id')->references('id')->on('storeynumbers')->onDelete('cascade');
             $table->integer('layout_id')->unsigned();
-            $table->foreign('layout_id')->references('id')->on('layouts')->onDelete('cascade');
+            $table->foreign('layout_id')->references('id')->on('header')->onDelete('cascade');
             $table->integer('renovation_id')->unsigned();
             $table->foreign('renovation_id')->references('id')->on('renovations')->onDelete('cascade');
             $table->integer('bathroom_id')->unsigned();

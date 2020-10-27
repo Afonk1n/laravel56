@@ -11,7 +11,7 @@ class Room extends Model
         'name',
     ];
 
-    /*public function apartment(){
+    public function apartments(){
         return $this->nasMany('App\Apartment');
-    }*/
+    }
 }

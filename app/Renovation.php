@@ -10,4 +10,7 @@ class Renovation extends Model
     protected $fillable = [
         'name',
     ];
+    public function apartments(){
+        return $this->nasMany('App\Apartment');
+    }
 }

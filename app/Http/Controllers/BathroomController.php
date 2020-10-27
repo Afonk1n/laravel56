@@ -36,6 +36,9 @@ class BathroomController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
         $bathroom = new Bathroom();
         $bathroom->name = $request->get('name');
         $bathroom->save();

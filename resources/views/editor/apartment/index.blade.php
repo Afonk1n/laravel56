@@ -43,14 +43,14 @@
                                     <td>{{$apartment['storey']}}</td>
                                     <td>{{$apartment['specification']}}</td>
                                     <td>{{$apartment['additional']}}</td>
-                                    <td>{{$apartment['sold']}}</td>
-                                    <td>{{$apartment['room_id']}}</td>
-                                    <td>{{$apartment['street_id']}}</td>
-                                    <td>{{$apartment['storeynumber_id']}}</td>
-                                    <td>{{$apartment['layout_id']}}</td>
-                                    <td>{{$apartment['renovation_id']}}</td>
-                                    <td>{{$apartment['bathroom_id']}}</td>
-                                    <td>{{$apartment['district_id']}}</td>
+                                    <td>@if($apartment['sold']== 0) Активно @else Не активно @endif</td>
+                                    <td>{{$apartment->room->name}}</td>
+                                    <td>{{$apartment->street->name}}</td>
+                                    <td>{{$apartment->storeynumber->name}}</td>
+                                    <td>{{$apartment->layout->name}}</td>
+                                    <td>{{$apartment->renovation->name}}</td>
+                                    <td>{{$apartment->bathroom->name}}</td>
+                                    <td>{{$apartment->district->name}}</td>
                                     <td align="right"><a href="{{action('ApartmentController@edit', $apartment['id'])}}" class="btn btn-dark">Редактировать</a></td>
                                     <td align="left">
                                         <form action="{{action('ApartmentController@destroy', $apartment['id'])}}" method="post">

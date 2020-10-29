@@ -35,6 +35,9 @@ class LayoutController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $layout = new Layout();
         $layout->name = $request->get('name');
         $layout->save();
@@ -74,6 +77,9 @@ class LayoutController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $layout= Layout::find($id);
         $layout->name=$request->get('name');
         $layout->save();

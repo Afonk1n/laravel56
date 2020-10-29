@@ -35,6 +35,9 @@ class RenovationController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $renovation = new renovation();
         $renovation->name = $request->get('name');
         $renovation->save();
@@ -74,6 +77,9 @@ class RenovationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $renovation= Renovation::find($id);
         $renovation->name=$request->get('name');
         $renovation->save();

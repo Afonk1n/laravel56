@@ -35,6 +35,9 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $status = new Status();
         $status->name = $request->get('name');
         $status->save();
@@ -74,6 +77,9 @@ class StatusController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $status= Status::find($id);
         $status->name=$request->get('name');
         $status->save();

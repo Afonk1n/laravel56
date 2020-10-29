@@ -99,6 +99,14 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group col-md-4">
+                                    <label for="sold">Статус:</label>
+                                    <select class="form-control" name="sold">
+                                        <option disabled>Выберите статус</option>
+                                        <option value="0">Активна</option>
+                                        <option value="1">Не активна</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12"></div>

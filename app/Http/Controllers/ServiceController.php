@@ -35,6 +35,9 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $service = new Service();
         $service->name = $request->get('name');
         $service->save();
@@ -74,6 +77,9 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $service= Service::find($id);
         $service->name=$request->get('name');
         $service->save();

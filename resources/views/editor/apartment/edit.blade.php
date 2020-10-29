@@ -100,6 +100,14 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group col-md-4">
+                                    <label for="sold">Статус:</label>
+                                    <select class="form-control" name="sold">
+                                        <option disabled>Выберите статус</option>
+                                        <option value="0" @if($apartment->sold == 0) selected @endif>Активна</option>
+                                        <option value="1" @if($apartment->sold == 1) selected @endif>Не активна</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12"></div>

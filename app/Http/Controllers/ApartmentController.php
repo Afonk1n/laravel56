@@ -55,6 +55,7 @@ class ApartmentController extends Controller
         $apartment->storey = $request->get('storey');
         $apartment->specification = $request->get('specification');
         $apartment->additional = $request->get('additional');
+        $apartment->sold = $request->get('sold');
         $apartment->room_id = $request->get('room_id');
         $apartment->street_id = $request->get('street_id');
         $apartment->storeynumber_id = $request->get('storeynumber_id');
@@ -112,6 +113,7 @@ class ApartmentController extends Controller
         $apartment->storey = $request->get('storey');
         $apartment->specification = $request->get('specification');
         $apartment->additional = $request->get('additional');
+        $apartment->sold = $request->get('sold');
         $apartment->room_id = $request->get('room_id');
         $apartment->street_id = $request->get('street_id');
         $apartment->storeynumber_id = $request->get('storeynumber_id');

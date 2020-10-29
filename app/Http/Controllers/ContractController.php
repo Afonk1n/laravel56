@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Street;
+
 use Illuminate\Http\Request;
 
-class StreetController extends Controller
+class ContractController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,7 @@ class StreetController extends Controller
      */
     public function index()
     {
-        $streets = Street::all();
-        return view('admin/street/index',compact('streets'));
+        //
     }
 
     /**
@@ -24,7 +23,7 @@ class StreetController extends Controller
      */
     public function create()
     {
-        return view('admin/street/create');
+        //
     }
 
     /**
@@ -35,14 +34,7 @@ class StreetController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|max:100',
-        ]);
-        $street = new Street();
-        $street->name = $request->get('name');
-        $street->save();
-
-        return redirect('streets')->with('Запись добавлена');
+        //
     }
 
     /**
@@ -64,8 +56,7 @@ class StreetController extends Controller
      */
     public function edit($id)
     {
-        $street = Street::find($id);
-        return view('admin/street/edit',compact('street','id'));
+        //
     }
 
     /**
@@ -77,13 +68,7 @@ class StreetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|max:100',
-        ]);
-        $street= Street::find($id);
-        $street->name=$request->get('name');
-        $street->save();
-        return redirect('streets');
+        //
     }
 
     /**
@@ -94,8 +79,6 @@ class StreetController extends Controller
      */
     public function destroy($id)
     {
-        $street = Street::find($id);
-        $street->delete();
-        return redirect('streets')->with('Запись удалена');
+        //
     }
 }

@@ -36,6 +36,9 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $district = new District();
         $district->name = $request->get('name');
         $district->save();
@@ -75,6 +78,9 @@ class DistrictController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $district= District::find($id);
         $district->name=$request->get('name');
         $district->save();

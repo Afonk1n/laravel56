@@ -35,6 +35,9 @@ class StoreynumberController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $storeynumber = new Storeynumber();
         $storeynumber->name = $request->get('name');
         $storeynumber->save();
@@ -74,6 +77,9 @@ class StoreynumberController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+        ]);
         $storeynumber= Storeynumber::find($id);
         $storeynumber->name=$request->get('name');
         $storeynumber->save();

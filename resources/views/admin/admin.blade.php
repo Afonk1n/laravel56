@@ -1,4 +1,4 @@
-@extends('admin.header.adminlayout')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -23,6 +23,7 @@
                             <div class="item m-2"><a href="/statuses" class="btn btn-dark w-25">Статусы</a></div>
                             <div class="item m-2"><a href="/apartments" class="btn btn-dark w-25">Квартиры</a></div>
                             <div class="item m-2"><a href="/contracts" class="btn btn-dark w-25">Контракты</a></div>
+                            <div class="item m-2"><a href="/users" class="btn btn-dark w-25">Пользователи</a></div>
                     </div>
                 </div>
             </div>

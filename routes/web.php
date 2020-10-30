@@ -42,5 +42,7 @@ Route::resource('apartments', 'ApartmentController')->middleware('checkroleedito
 
 Route::resource('contracts', 'ContractController')->middleware('checkroleeditor');
 
+Route::resource('users', 'UserController')->middleware('checkroleeditor');
+
 Auth::routes();
 

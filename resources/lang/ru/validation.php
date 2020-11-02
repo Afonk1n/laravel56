@@ -162,7 +162,7 @@ return [
     */
 
     'attributes' => [
-        'name'                  => 'Имя',
+        'name'                  => 'Логин',
         'username'              => 'Никнейм',
         'email'                 => 'E-Mail адрес',
         'first_name'            => 'Имя',
@@ -191,5 +191,15 @@ return [
         'time'                  => 'Время',
         'available'             => 'Доступно',
         'size'                  => 'Размер',
+        'area'                  => 'Площадь',
+        'number'                => 'Номер дома',
+        'storey'                => 'Этаж',
+        'specification'         => 'Спецификация',
+        'additional'            => 'Дополнительно',
+        'firstname'             => 'Имя',
+        'secondname'            => 'Фамилия',
+        'patronymic'            => 'Отчество',
+        'birthdate'             => 'Дата рождения',
+        'passport'              => 'Паспорт',
     ],
 ];

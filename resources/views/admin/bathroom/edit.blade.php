@@ -19,7 +19,7 @@
                                     <div class="col-md-12"></div>
                                     <div class="form-group col-md-4">
                                         <label for="name">Имя:</label>
-                                        <input type="text" class="form-control {{ $errors->all() ? ' is-invalid' : '' }}" name="name" value="{{$bathroom->name}}">
+                                        <input type="text" class="form-control" name="name" value="{{$bathroom->name}}"  placeholder="Например: ">
                                         @if ($errors->all())
                                             @foreach ($errors->all() as $error)
                                                 <li class="text-danger">{{ $error }}</li>

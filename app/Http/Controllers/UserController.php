@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -28,8 +29,8 @@ class UserController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);*/
-        return view('editor/user/create');
+        ]);
+        return view('editor/user/create');*/
     }
 
     /**
@@ -40,14 +41,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        /*$request->validate([
             'name' => 'required|max:100',
         ]);
         $user = new User();
         $user->name = $request->get('name');
         $user->save();
 
-        return redirect('users')->with('Запись добавлена');
+        return redirect('users')->with('Запись добавлена');*/
     }
 
     /**
@@ -70,6 +71,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        if($user->role == 2 || (auth()->user()->role == 1 && $user->role == 1)){
+            return redirect('users');
+        }
         return view('editor/user/edit',compact('user','id'));
     }
 
@@ -82,7 +86,32 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|max:50',
+            'firstname' => 'required|max:50',
+            'secondname' => 'required|max:50',
+            'patronymic' => 'required|max:50',
+            'phone' => 'required|regex:/(8)[0-9]{10}/',
+            'passport' => 'required|regex:/[0-9]{2}( )[0-9]{2}( )[0-9]{6}/',
+            'address' => 'required|max:100',
+        ]);
+        $user= User::find($id);
+        $user->name=$request->get('name');
+        $user->email=$request->get('email');
+        $user->firstname=$request->get('firstname');
+        $user->secondname=$request->get('secondname');
+        $user->patronymic=$request->get('patronymic');
+        $user->birthdate=$request->get('birthdate');
+        $user->phone=$request->get('phone');
+        $user->gender=$request->get('gender');
+        $user->passport=$request->get('passport');
+        $user->address=$request->get('address');
+        if(Auth::check() && Auth::user()->role == 2){
+            $user->role=$request->get('role');
+        }
+        $user->save();
+        return redirect('users');
     }
 
     /**
@@ -93,6 +122,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('users')->with('Запись удалена');
     }
 }

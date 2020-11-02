@@ -63,7 +63,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <a href="/admin" class="btn btn-dark">Назад</a>
+                        <a href="@if (auth()->user()->role > 1) /admin @else /editor @endif" class="btn btn-dark">Назад</a>
                         <a href="/apartments/create" class="btn btn-dark">Добавить запись</a>
                     </div>
                 </div>

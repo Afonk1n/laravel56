@@ -34,28 +34,30 @@
                             <tbody>
                             @if(auth()->user()->role == 2)
                                 @foreach($users as $user)
-                                    <tr>
-                                        <td>{{$user['id']}}</td>
-                                        <td>{{$user['name']}}</td>
-                                        <td>{{$user['email']}}</td>
-                                        <td>{{$user['firstname']}}</td>
-                                        <td>{{$user['secondname']}}</td>
-                                        <td>{{$user['patronymic']}}</td>
-                                        <td>{{$user['birthdate']}}</td>
-                                        <td>{{$user['phone']}}</td>
-                                        <td>{{$user['gender']}}</td>
-                                        <td>{{$user['passport']}}</td>
-                                        <td>{{$user['address']}}</td>
-                                        <td>@if($user['role'] == 0) Клиент @else @if($user['role'] == 1) Сотрудник @else Администратор @endif @endif</td>
-                                        <td align="right"><a href="{{action('UserController@edit', $user['id'])}}" class="btn btn-dark">Редактировать</a></td>
-                                        <td align="left">
-                                            <form action="{{action('UserController@destroy', $user['id'])}}" method="post">
-                                                @csrf
-                                                <input name="_method" type="hidden" value="DELETE">
-                                                <button class="btn btn-dark" type="submit">Удалить</button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                    @if($user['role'] < 2)
+                                        <tr>
+                                            <td>{{$user['id']}}</td>
+                                            <td>{{$user['name']}}</td>
+                                            <td>{{$user['email']}}</td>
+                                            <td>{{$user['firstname']}}</td>
+                                            <td>{{$user['secondname']}}</td>
+                                            <td>{{$user['patronymic']}}</td>
+                                            <td>{{$user['birthdate']}}</td>
+                                            <td>{{$user['phone']}}</td>
+                                            <td>{{$user['gender']}}</td>
+                                            <td>{{$user['passport']}}</td>
+                                            <td>{{$user['address']}}</td>
+                                            <td>@if($user['role'] == 0) Клиент @else @if($user['role'] == 1) Сотрудник @else Администратор @endif @endif</td>
+                                            <td align="right"><a href="{{action('UserController@edit', $user['id'])}}" class="btn btn-dark">Редактировать</a></td>
+                                            <td align="left">
+                                                <form action="{{action('UserController@destroy', $user['id'])}}" method="post">
+                                                    @csrf
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <button class="btn btn-dark" type="submit">Удалить</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             @else @if(auth()->user()->role == 1)
                                 @foreach($users as $user)
@@ -84,12 +86,11 @@
                                         </tr>
                                     @endif
                                 @endforeach
-                                @endif
+                            @endif
                             @endif
                             </tbody>
                         </table>
-                        <a href="/admin" class="btn btn-dark">Назад</a>
-                        <a href="/users/create" class="btn btn-dark">Добавить запись</a>
+                        <a href="@if (auth()->user()->role > 1) /admin @else /editor @endif" class="btn btn-dark">Назад</a>
                     </div>
                 </div>
             </div>

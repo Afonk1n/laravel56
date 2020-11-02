@@ -19,23 +19,23 @@
                                 <div class="col-md-12"></div>
                                 <div class="form-group col-md-4">
                                     <label for="area">Площадь:</label>
-                                    <input type="text" class="form-control" name="area" value="{{$apartment->area}}">
+                                    <input type="text" class="form-control" name="area" value="{{$apartment->area}}" placeholder="Например: 50">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="number">Номер дома:</label>
-                                    <input type="text" class="form-control" name="number" value="{{$apartment->number}}">
+                                    <input type="text" class="form-control" name="number" value="{{$apartment->number}}" placeholder="Например: 5">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="storey">Этаж:</label>
-                                    <input type="text" class="form-control" name="storey" value="{{$apartment->storey}}">
+                                    <input type="text" class="form-control" name="storey" value="{{$apartment->storey}}" placeholder="Например: 5">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="specification">Спецификация:</label>
-                                    <textarea class="form-control" name="specification">{{$apartment->specification}}</textarea>
+                                    <textarea class="form-control" name="specification" placeholder="Например: От застройщика">{{$apartment->specification}}</textarea>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="additional">Дополнительно:</label>
-                                    <textarea class="form-control" name="additional">{{$apartment->additional}}</textarea>
+                                    <textarea class="form-control" name="additional" placeholder="Например: Рядом детский сад">{{$apartment->additional}}</textarea>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="room_id">Количество комнат:</label>
@@ -110,6 +110,13 @@
                                 </div>
                             </div>
                             <div class="row">
+                                @if ($errors->all())
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li class="text-danger">{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                                 <div class="col-md-12"></div>
                                 <div class="form-group col-md-4" style="margin-top:10px">
                                     <a href="/apartments" class="btn btn-dark">Назад</a>

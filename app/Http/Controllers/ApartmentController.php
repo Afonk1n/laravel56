@@ -49,6 +49,13 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'area' => 'required|integer|min:10|max:1000',
+            'number' => 'required|integer|min:1|max:1000',
+            'storey' => 'required|integer|min:1|max:100',
+            'specification' => 'required|max:1000',
+            'additional' => 'required|max:1000',
+        ]);
         $apartment = new Apartment();
         $apartment->area = $request->get('area');
         $apartment->number = $request->get('number');
@@ -107,6 +114,13 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'area' => 'required|integer|min:10|max:1000',
+            'number' => 'required|integer|min:1|max:1000',
+            'storey' => 'required|integer|min:1|max:100',
+            'specification' => 'required|max:1000',
+            'additional' => 'required|max:1000',
+        ]);
         $apartment= Apartment::find($id);
         $apartment->area = $request->get('area');
         $apartment->number = $request->get('number');

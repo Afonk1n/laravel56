@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header text-center">Панель администрирования справочников</div>
-                    <div class="card-body text-center">
+                <div class="card text-center">
+                    <div class="card-header">Панель администрирования справочников</div>
+                    <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -22,7 +22,6 @@
                             <div class="item m-2"><a href="/services" class="btn btn-dark w-25">Сервисы</a></div>
                             <div class="item m-2"><a href="/statuses" class="btn btn-dark w-25">Статусы</a></div>
                             <div class="item m-2"><a href="/apartments" class="btn btn-dark w-25">Квартиры</a></div>
-                            <div class="item m-2"><a href="/contracts" class="btn btn-dark w-25">Контракты</a></div>
                             <div class="item m-2"><a href="/users" class="btn btn-dark w-25">Пользователи</a></div>
                     </div>
                 </div>

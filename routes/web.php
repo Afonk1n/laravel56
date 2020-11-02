@@ -44,5 +44,7 @@ Route::resource('contracts', 'ContractController')->middleware('checkroleeditor'
 
 Route::resource('users', 'UserController')->middleware('checkroleeditor');
 
+Route::resource('offers', 'OfferController');
+
 Auth::routes();
 

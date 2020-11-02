@@ -15,10 +15,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="https://kit.fontawesome.com/a99a5f29f1.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -47,7 +47,7 @@
                         <a class="nav-link text-dark" href="{{ route('home') }}">{{ __('Главная') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="#">{{ __('Квартиры') }}</a>
+                        <a class="nav-link text-dark" href="/offers">{{ __('Квартиры') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="{{ route('about') }}">{{ __('О нас') }}</a>
@@ -77,7 +77,6 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Выйти') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
@@ -88,7 +87,6 @@
             </div>
         </div>
     </nav>
-
     <main class="py-4">
         @yield('content')
     </main>

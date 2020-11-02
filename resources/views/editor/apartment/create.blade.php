@@ -18,23 +18,23 @@
                                 <div class="col-md-12"></div>
                                 <div class="form-group col-md-4">
                                     <label for="area">Площадь:</label>
-                                    <input type="text" class="form-control" name="area">
+                                    <input type="text" class="form-control" name="area" placeholder="Например: 50">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="number">Номер дома:</label>
-                                    <input type="text" class="form-control" name="number">
+                                    <input type="text" class="form-control" name="number" placeholder="Например: 5">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="storey">Этаж:</label>
-                                    <input type="text" class="form-control" name="storey">
+                                    <input type="text" class="form-control" name="storey" placeholder="Например: 5">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="specification">Спецификация:</label>
-                                    <textarea class="form-control" name="specification"></textarea>
+                                    <textarea class="form-control" name="specification" placeholder="Например: От застройщика"></textarea>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="additional">Дополнительно:</label>
-                                    <textarea class="form-control" name="additional"></textarea>
+                                    <textarea class="form-control" name="additional" placeholder="Например: Рядом детский сад"></textarea>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="room_id">Количество комнат:</label>
@@ -109,6 +109,13 @@
                                 </div>
                             </div>
                             <div class="row">
+                                @if ($errors->all())
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li class="text-danger">{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                                 <div class="col-md-12"></div>
                                 <div class="form-group col-md-4" style="margin-top:10px">
                                     <a href="/apartments" class="btn btn-dark">Назад</a>

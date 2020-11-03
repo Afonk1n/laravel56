@@ -10,6 +10,7 @@ use App\Room;
 use App\Storeynumber;
 use App\Street;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class ApartmentController extends Controller
 {
@@ -83,7 +84,58 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $apartment = Apartment::find($id);
+        $wordTest = new \PhpOffice\PhpWord\PhpWord();
+
+        $newSection = $wordTest->addSection();
+
+        $title = "Информация о квартире";
+
+        $street = json_decode( json_encode($apartment->street->name), true);
+        $number = json_decode( json_encode($apartment->number), true);
+        $storey = json_decode( json_encode($apartment->storey), true);
+        $area = json_decode( json_encode($apartment->area), true);
+        $room = json_decode( json_encode($apartment->room->name), true);
+        $storeynumber = json_decode( json_encode($apartment->storeynumber->name), true);
+        $layout = json_decode( json_encode($apartment->layout->name), true);
+        $renovation = json_decode( json_encode($apartment->renovation->name), true);
+        $bathroom = json_decode( json_encode($apartment->bathroom->name), true);
+        $district = json_decode( json_encode($apartment->district->name), true);
+        $specification = json_decode( json_encode($apartment->specification), true);
+        $additional = json_decode( json_encode($apartment->additional), true);
+
+        $text1 = "Адрес: " . $street . " " . $number . ".";
+        $text2 = "Этаж: " . $storey . ".";
+        $text3 = "Плодащь: " . $area . " квадратных метров.";
+        $text4 = "Комнатность: " . $room . ".";
+        $text5 = "Этажность: " . $storeynumber . ".";
+        $text6 = "Планировка: " . $layout . ".";
+        $text7 = "Ремонт: " . $renovation . ".";
+        $text8 = "Санитарный узел: " . $bathroom . ".";
+        $text9 = "Район: " . $district . ".";
+        $text10 = "Спецификация квартиры: " . $specification . ".";
+        $text11 = "Дополнительная информация: " . $additional . ".";
+
+        $newSection->addText($title,array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black') ,array('align' => 'center'));
+        $newSection->addText($text1, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text2, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text3, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text4, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text5, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text6, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text7, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text8, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text9, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text10, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+        $newSection->addText($text11, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+
+        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest, 'Word2007');
+        try {
+            $objectWriter->save(storage_path('TestWordFile.docx'));
+        } catch (Exception $e) {
+        }
+
+        return response()->download(storage_path('TestWordFile.docx'));
     }
 
     /**
@@ -151,4 +203,29 @@ class ApartmentController extends Controller
         $apartment->delete();
         return redirect('apartments')->with('Запись удалена');
     }
+
+    public function createWordDocx($id)
+    {
+        $apartment = Apartment::find($id);
+        $wordTest = new \PhpOffice\PhpWord\PhpWord();
+
+        $newSection = $wordTest->addSection();
+
+        $title = "Информация о квартире";
+
+        $street = $apartment->street;
+        $text = "Квартира расположена по адресу " . $street;
+
+        $newSection->addText($title,array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black') ,array('align' => 'center'));
+        $newSection->addText($text, array('name' => 'Times New Roman', 'size' => 14, 'color' => 'black'));
+
+        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest, 'Word2007');
+        try {
+            $objectWriter->save(storage_path('TestWordFile.docx'));
+        } catch (Exception $e) {
+        }
+
+        return response()->download(storage_path('TestWordFile.docx'));
+    }
+
 }

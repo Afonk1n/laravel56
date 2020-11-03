@@ -46,5 +46,10 @@ Route::resource('users', 'UserController')->middleware('checkroleeditor');
 
 Route::resource('offers', 'OfferController');
 
+Route::get('/word', 'WordController@createWordDocx');
+
+Route::get('/words', 'ApartmentController@createWordDocx');
+
+
 Auth::routes();
 

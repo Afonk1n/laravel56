@@ -15,18 +15,15 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <td>Площадь</td>
+                                <td>Улица</td>
                                 <td>Номер</td>
                                 <td>Этаж</td>
+                                <td>Площадь</td>
                                 <td>Спецификация</td>
-                                <td>Дополнительно</td>
                                 <td>Комнатность</td>
-                                <td>Улица</td>
                                 <td>Этажность</td>
                                 <td>Планировка</td>
                                 <td>Ремонт</td>
-                                <td>Сан.узел</td>
-                                <td>Район</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -35,18 +32,15 @@
                             @foreach($apartments as $apartment)
                                 @if($apartment['sold']== 0)
                                     <tr onclick="location.href='{{action('OfferController@show', $apartment['id'])}}'">
-                                        <td>{{$apartment['area']}} м<sup>2</sup></td>
+                                        <td>{{$apartment->street->name}}</td>
                                         <td>{{$apartment['number']}}</td>
                                         <td>{{$apartment['storey']}}</td>
+                                        <td>{{$apartment['area']}} м<sup>2</sup></td>
                                         <td>{{$apartment['specification']}}</td>
-                                        <td>{{$apartment['additional']}}</td>
                                         <td>{{$apartment->room->name}}</td>
-                                        <td>{{$apartment->street->name}}</td>
                                         <td>{{$apartment->storeynumber->name}}</td>
                                         <td>{{$apartment->layout->name}}</td>
                                         <td>{{$apartment->renovation->name}}</td>
-                                        <td>{{$apartment->bathroom->name}}</td>
-                                        <td>{{$apartment->district->name}}</td>
                                         <td></td>
                                         <td></td>
                                     </tr>

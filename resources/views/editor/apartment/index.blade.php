@@ -52,6 +52,7 @@
                                     <td>{{$apartment->bathroom->name}}</td>
                                     <td>{{$apartment->district->name}}</td>
                                     <td align="right"><a href="{{action('ApartmentController@edit', $apartment['id'])}}" class="btn btn-dark">Редактировать</a></td>
+                                    <td align="right"><a href="{{action('ApartmentController@show', $apartment['id'])}}" class="btn btn-dark">Печать</a></td>
                                     <td align="left">
                                         <form action="{{action('ApartmentController@destroy', $apartment['id'])}}" method="post">
                                             @csrf

@@ -50,33 +50,4 @@ class HomeController extends Controller
 
         return response()->download(storage_path('TestWordFile.docx'));
     }
-    /*
-    public function msword()
-    {
-        $phpWord = new \PhpOffice\PhpWord\PhpWord();
-        $section = $phpWord->addSection();
-        $text = "The Portfolio details is a very useful feature of the web page.";
-        $section->addText($text);
-
-        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        $objWriter->save('Appdividend.docx');
-        return response()->download(public_path('phpflow.docx'));
-    }
-    public function createword()
-    {
-        $word = new \PhpOffice\PhpWord\PhpWord();
-
-        $section = $word->addSection();
-
-        $text = "test";
-        $section->addText($text);
-        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($word, 'Word2007');
-
-        try{
-            $objWriter->save(storage_path('TestFile.docx'));
-        }   catch (Exception $e){
-        }
-
-        return response()->download(storage_path('TestFile.docx'));
-    }*/
 }

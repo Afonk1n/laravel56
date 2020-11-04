@@ -12,11 +12,10 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <table class="table table-striped table-hover">
+                        <table class="table table-striped table-hover offer-table">
                             <thead>
                             <tr>
-                                <td>Улица</td>
-                                <td>Номер</td>
+                                <td>Адрес</td>
                                 <td>Этаж</td>
                                 <td>Площадь</td>
                                 <td>Спецификация</td>
@@ -32,8 +31,7 @@
                             @foreach($apartments as $apartment)
                                 @if($apartment['sold']== 0)
                                     <tr onclick="location.href='{{action('OfferController@show', $apartment['id'])}}'">
-                                        <td>{{$apartment->street->name}}</td>
-                                        <td>{{$apartment['number']}}</td>
+                                        <td>Ул.{{$apartment->street->name}}, д. {{$apartment['number']}}</td>
                                         <td>{{$apartment['storey']}}</td>
                                         <td>{{$apartment['area']}} м<sup>2</sup></td>
                                         <td>{{$apartment['specification']}}</td>

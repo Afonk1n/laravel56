@@ -131,11 +131,11 @@ class ApartmentController extends Controller
 
         $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest, 'Word2007');
         try {
-            $objectWriter->save(storage_path('TestWordFile.docx'));
+            $objectWriter->save(storage_path('ApartmentInfo.docx'));
         } catch (Exception $e) {
         }
 
-        return response()->download(storage_path('TestWordFile.docx'));
+        return response()->download(storage_path('ApartmentInfo.docx'));
     }
 
     /**

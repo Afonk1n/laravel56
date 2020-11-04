@@ -1,0 +1,11 @@
+.offer-table:hover{
+    cursor: pointer
+}
+
+.index-table{
+    border-collapse: collapse;
+}
+
+.index-table td{
+    border:none;
+}

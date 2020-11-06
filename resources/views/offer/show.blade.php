@@ -12,6 +12,9 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        @if($apartment->image)
+                                <img width="600" height="400" src="{{url('uploads/'.$apartment->image)}}" alt="{{$apartment->image}}">
+                            @endif
                         <table class="table table-striped">
                             <tbody>
                             <tr>

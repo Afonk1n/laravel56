@@ -12,7 +12,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="post" action="{{action('ApartmentController@update', $id)}}">
+                        <form method="post" action="{{action('ApartmentController@update', $id)}}" enctype="multipart/form-data">
                             @csrf
                             <input name="_method" type="hidden" value="PATCH">
                             <div class="row">
@@ -107,6 +107,10 @@
                                         <option value="0" @if($apartment->sold == 0) selected @endif>Активна</option>
                                         <option value="1" @if($apartment->sold == 1) selected @endif>Не активна</option>
                                     </select>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="image">Фото:</label>
+                                    <input type="file" class="form-control" name="image">
                                 </div>
                             </div>
                             <div class="row">

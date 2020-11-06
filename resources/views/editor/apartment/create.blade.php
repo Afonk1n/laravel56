@@ -107,6 +107,10 @@
                                         <option value="1">Не активна</option>
                                     </select>
                                 </div>
+                                <div class="form-group col-md-5">
+                                    <label for="image">Фото:</label>
+                                    <input type="file" class="form-control" name="image">
+                                </div>
                             </div>
                             <div class="row">
                                 @if ($errors->all())

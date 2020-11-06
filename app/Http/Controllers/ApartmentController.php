@@ -11,6 +11,8 @@ use App\Storeynumber;
 use App\Street;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Exception;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ApartmentController extends Controller
 {
@@ -57,7 +59,14 @@ class ApartmentController extends Controller
             'specification' => 'required|max:1000',
             'additional' => 'required|max:1000',
         ]);
+
         $apartment = new Apartment();
+        if($request->image){
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            Storage::disk('public')->put($image->getFilename().'.'.$extension,  File::get($image));
+            $apartment->image = $image->getFilename().'.'.$extension;
+        }
         $apartment->area = $request->get('area');
         $apartment->number = $request->get('number');
         $apartment->storey = $request->get('storey');
@@ -174,6 +183,13 @@ class ApartmentController extends Controller
             'additional' => 'required|max:1000',
         ]);
         $apartment= Apartment::find($id);
+        if($request->image){
+            Storage::disk('public')->delete($apartment->image);
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            Storage::disk('public')->put($image->getFilename().'.'.$extension,  File::get($image));
+            $apartment->image = $image->getFilename().'.'.$extension;
+        }
         $apartment->area = $request->get('area');
         $apartment->number = $request->get('number');
         $apartment->storey = $request->get('storey');

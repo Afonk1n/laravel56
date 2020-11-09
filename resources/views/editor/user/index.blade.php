@@ -42,7 +42,7 @@
                                             <td>{{$user['firstname']}}</td>
                                             <td>{{$user['secondname']}}</td>
                                             <td>{{$user['patronymic']}}</td>
-                                            <td>{{$user['birthdate']}}</td>
+                                            <td>{{\Carbon\Carbon::parse($user->birthdate)->format('d/m/Y')}}</td>
                                             <td>{{$user['phone']}}</td>
                                             <td>{{$user['gender']}}</td>
                                             <td>{{$user['passport']}}</td>

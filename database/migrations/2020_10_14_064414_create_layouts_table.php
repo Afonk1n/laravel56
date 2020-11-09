@@ -17,6 +17,12 @@ class CreateLayoutsTable extends Migration
             $table->increments('id');
             $table->string('name', 45);
         });
+        /*
+        Schema::create('layouts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 45);
+        });*/
+
     }
 
     /**

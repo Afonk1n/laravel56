@@ -12,8 +12,6 @@
 */
 Route::get('/', 'HomeController@index')->name('home');
 
-/*Route::get('/apartments', 'ApartmentController@apartment')->name('apartment');*/
-
 Route::get('/about', 'AboutController@About')->name('about');
 
 Route::get('/editor', 'EditorController@editor')->middleware('checkroleeditor')->name('editor');

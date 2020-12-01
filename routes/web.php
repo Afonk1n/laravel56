@@ -18,6 +18,7 @@ Route::get('/editor', 'EditorController@editor')->middleware('checkroleeditor')-
 
 Route::get('/admin', 'AdminController@admin')->middleware('checkrole');
 
+
 Route::resource('bathrooms','BathroomController')->middleware('checkrole');
 
 Route::resource('districts', 'DistrictController')->middleware('checkrole');
@@ -44,9 +45,12 @@ Route::resource('users', 'UserController')->middleware('checkroleeditor');
 
 Route::resource('offers', 'OfferController');
 
+Route::resource('profiles', 'ProfileController');
+
 Route::get('/word', 'WordController@createWordDocx');
 
 Route::get('/words', 'ApartmentController@createWordDocx');
+
 
 
 Auth::routes();

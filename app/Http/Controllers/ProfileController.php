@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+
 class ProfileController extends Controller
 {
     /**
@@ -81,6 +84,13 @@ class ProfileController extends Controller
         ]);
         $user= User::find(auth()->user()->id);
         $id = auth()->user()->id;
+        if($request->photo){
+            Storage::disk('public')->delete($user->photo);
+            $photo = $request->file('photo');
+            $extension = $photo->getClientOriginalExtension();
+            Storage::disk('public')->put($photo->getFilename().'.'.$extension,  File::get($photo));
+            $user->photo = $photo->getFilename().'.'.$extension;
+        }
         $user->name=$request->get('name');
         $user->email=$request->get('email');
         $user->firstname=$request->get('firstname');

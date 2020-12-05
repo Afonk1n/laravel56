@@ -5,14 +5,19 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">Редактирование профиля</div>
+                    <div class="card-header">Профиль</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="post" action="{{action('ProfileController@update',$id)}}">
+                        @if($user->photo)
+                            <div class="text-center">
+                                <img class="img-fluid rounded" width="300" height="300" src="{{url('uploads/'.$user->photo)}}" alt="{{$user->photo}}">
+                            </div>
+                            @endif
+                        <form method="post" action="{{action('ProfileController@update',$id)}}" enctype="multipart/form-data">
                             @csrf
                             <input name="_method" type="hidden" value="PATCH">
                             <div class="row">
@@ -60,6 +65,10 @@
                                 <div class="form-group col-md-6">
                                     <label for="address">Адрес:</label>
                                     <input type="text" class="form-control" name="address" value="{{$user->address}}" placeholder="Например: Жукова 5, 35">
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <label for="photo">Фото:</label>
+                                    <input type="file" class="form-control" name="photo">
                                 </div>
                             </div>
                             <div class="row">

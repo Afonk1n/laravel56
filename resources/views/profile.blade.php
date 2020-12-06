@@ -14,7 +14,7 @@
                         @endif
                         @if($user->photo)
                             <div class="text-center">
-                                <img class="img-fluid rounded" width="300" height="300" src="{{url('uploads/'.$user->photo)}}" alt="{{$user->photo}}">
+                                <img class="img-fluid rounded mb-2" width="300" height="300" src="{{url('uploads/'.$user->photo)}}" alt="{{$user->photo}}">
                             </div>
                             @endif
                         <form method="post" action="{{action('ProfileController@update',$id)}}" enctype="multipart/form-data">

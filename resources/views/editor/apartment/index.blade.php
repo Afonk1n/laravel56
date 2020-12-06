@@ -10,7 +10,7 @@
                             <a href="@if (auth()->user()->role > 1) /admin @else /editor @endif" class="btn btn-dark">Назад</a>
                             <a href="/apartments/create" class="btn btn-dark">Добавить запись</a>
                         </div>
-                        </div>
+                </div>
                             @foreach($apartments as $apartment)
                                 <div class="card m-1">
                                     <div class="card-body">
@@ -19,7 +19,12 @@
                                                 {{ session('status') }}
                                             </div>
                                         @endif
-                                        <table class="table table-striped">
+                                            @if($apartment->image)
+                                                <div class="text-center">
+                                                    <img width="600" height="400" src="{{url('uploads/'.$apartment->image)}}" alt="{{$apartment->image}}">
+                                                </div>
+                                            @endif
+                                        <table class="table table-striped table-bordered">
                                             <tbody>
                                                 <tr>
                                                     <td>№</td>

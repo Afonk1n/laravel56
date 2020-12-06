@@ -22,7 +22,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 @foreach($bathrooms as $bathroom)
                                     <tr>
                                         <td>{{$bathroom['id']}}</td>

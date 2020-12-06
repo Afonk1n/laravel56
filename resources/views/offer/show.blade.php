@@ -14,10 +14,10 @@
                         @endif
                         @if($apartment->image)
                             <div class="text-center">
-                                <img class="img-fluid rounded" src="{{url('uploads/'.$apartment->image)}}" alt="{{$apartment->image}}">
+                                <img class="img-fluid rounded" width="600" height="400" src="{{url('uploads/'.$apartment->image)}}" alt="{{$apartment->image}}">
                             </div>
                             @endif
-                        <table class="table table-striped">
+                        <table class="table table-striped table-bordered">
                             <tbody>
                             <tr>
                                 <td>Площадь</td>

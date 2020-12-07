@@ -16,6 +16,10 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/a99a5f29f1.js" crossorigin="anonymous"></script>
+    <!-- Zoom -->
+
+
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">

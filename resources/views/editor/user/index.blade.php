@@ -53,7 +53,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Дата рождения</td>
-                                                <td>{{\Carbon\Carbon::parse($user->birthdate)->format('d/m/Y')}}</td>
+                                                <td>{{\Carbon\Carbon::parse($user->birthdate)->format('d.m.Y')}}</td>
                                             </tr>
                                             <tr>
                                                 <td>Телефон</td>

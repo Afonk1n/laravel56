@@ -12,11 +12,15 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="post" action="{{action('UserController@update', $id)}}">
+                            @if($user->photo)
+                                <div class="text-center">
+                                    <img class="img-fluid rounded mb-2" width="300" height="300" src="{{url('uploads/'.$user->photo)}}" alt="{{$user->photo}}">
+                                </div>
+                            @endif
+                        <form method="post" action="{{action('UserController@update', $id)}}" enctype="multipart/form-data">
                             @csrf
                             <input name="_method" type="hidden" value="PATCH">
                             <div class="row">
-                                <div class="col-md-12"></div>
                                 <div class="form-group col-md-4">
                                     <label for="name">Логин:</label>
                                     <input type="text" class="form-control" name="name" value="{{$user->name}}" placeholder="Например: maksim">
@@ -61,6 +65,10 @@
                                     <label for="address">Адрес:</label>
                                     <input type="text" class="form-control" name="address" value="{{$user->address}}" placeholder="Например: Жукова 5, 35">
                                 </div>
+                                <div class="form-group col-md-5">
+                                    <label for="photo">Фото:</label>
+                                    <input type="file" class="form-control" name="photo" placeholder="">
+                                </div>
                                 @auth
                                     @if(Auth::user()->role == 2)
                                         <div class="form-group col-md-4">
@@ -82,7 +90,6 @@
                                         @endforeach
                                     </ul>
                                 @endif
-                                <div class="col-md-12"></div>
                                 <div class="form-group col-md-4" style="margin-top:10px">
                                     <a href="/users" class="btn btn-dark">Назад</a>
                                     <button type="submit" class="btn btn-dark">Сохранить</button>

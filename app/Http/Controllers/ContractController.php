@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Apartment;
+use App\Contract;
+use App\Service;
+use App\Status;
 use Illuminate\Http\Request;
 
 class ContractController extends Controller
@@ -13,7 +17,8 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        $contracts = Contract::all();
+        return view('editor/contract/index',compact('contracts'));
     }
 
     /**
@@ -23,7 +28,11 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+        $apartments = Apartment::all();
+        $services = Service::all();
+        $statuses = Status::all();
+        $contracts = Contract::all();
+        return view('editor/contract/create',compact('contracts','services','statuses','apartments'));
     }
 
     /**
@@ -34,7 +43,21 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'transaction' => 'required|integer|min:1000|max:999999999',
+            'servicecost' => 'required|integer|min:100|max:999999',
+            'dealarea' => 'required|integer|min:10|max:50000',
+        ]);
+        $contract = new Contract();
+        $contract->transaction = $request->get('transaction');
+        $contract->servicecost = $request->get('servicecost');
+        $contract->dealdate = $request->get('dealdate');
+        $contract->dealarea = $request->get('dealarea');
+        $contract->service_id = $request->get('service_id');
+        $contract->apartment_id = $request->get('apartment_id');
+        $contract->status_id = $request->get('status_id');
+        $contract->save();
+        return redirect('contracts')->with('Запись добавлена');
     }
 
     /**
@@ -79,6 +102,8 @@ class ContractController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contract = Contract::find($id);
+        $contract->delete();
+        return redirect('contracts')->with('Запись удалена');
     }
 }

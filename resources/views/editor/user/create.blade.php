@@ -15,7 +15,6 @@
                         <form method="post" action="{{url('users')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-md-12"></div>
                                 <div class="form-group col-md-4">
                                     <label for="name">Логин:</label>
                                     <input type="text" class="form-control {{ $errors->all() ? ' is-invalid' : '' }}" name="name">

@@ -4,50 +4,50 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-15">
-                <div class="card">
-                    <div class="card-header">Список квартир</div>
-                    <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <table class="table table-striped table-hover offer-table">
-                            <thead>
-                            <tr>
-                                <td>Адрес</td>
-                                <td>Этаж</td>
-                                <td>Площадь</td>
-                                <td>Спецификация</td>
-                                <td>Комнатность</td>
-                                <td>Этажность</td>
-                                <td>Планировка</td>
-                                <td>Ремонт</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            </thead>
-                            <tbody>
                             @foreach($apartments as $apartment)
                                 @if($apartment['sold']== 0)
-                                    <tr onclick="location.href='{{action('OfferController@show', $apartment['id'])}}'">
-                                        <td>Ул.{{$apartment->street->name}}, д. {{$apartment['number']}}</td>
-                                        <td>{{$apartment['storey']}}</td>
-                                        <td>{{$apartment['area']}} м<sup>2</sup></td>
-                                        <td>{{$apartment['specification']}}</td>
-                                        <td>{{$apartment->room->name}}</td>
-                                        <td>{{$apartment->storeynumber->name}}</td>
-                                        <td>{{$apartment->layout->name}}</td>
-                                        <td>{{$apartment->renovation->name}}</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                @endif
-                            @endforeach
+                            <div class="card m-1">
+                            <div class="card-body">
+                                    <div class="row offer-block" onclick="location.href='{{action('OfferController@show', $apartment['id'])}}'">
+                                        @if($apartment->image)
+                                            <div class="text-center col-md-6">
+                                                <img class="img-fluid rounded" width="500" height="300" src="{{url('uploads/'.$apartment->image)}}" alt="{{$apartment->image}}">
+                                            </div>
+                                        @endif
+                        <table class="table table-striped offer-table col-md-6">
+                            <tbody>
+                                        <tr>
+                                            <td>Адрес</td>
+                                            <td>Ул.{{$apartment->street->name}}, д. {{$apartment['number']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Этаж</td>
+                                            <td>{{$apartment['storey']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Площадь</td>
+                                            <td>{{$apartment['area']}} м<sup>2</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Кол-во комнат</td>
+                                            <td>{{$apartment->room->name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ремонт</td>
+                                            <td>{{$apartment->renovation->name}}</td>
+                                        </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
+                                    </div>
+                                    </div>
+                            </div>
+                                @endif
+                            @endforeach
             </div>
         </div>
     </div>

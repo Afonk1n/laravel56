@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -97,6 +99,13 @@ class UserController extends Controller
             'address' => 'required|max:100',
         ]);
         $user= User::find($id);
+        if($request->photo){
+            Storage::disk('public')->delete($user->photo);
+            $photo = $request->file('photo');
+            $extension = $photo->getClientOriginalExtension();
+            Storage::disk('public')->put($photo->getFilename().'.'.$extension,  File::get($photo));
+            $user->photo = $photo->getFilename().'.'.$extension;
+        }
         $user->name=$request->get('name');
         $user->email=$request->get('email');
         $user->firstname=$request->get('firstname');

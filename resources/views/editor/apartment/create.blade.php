@@ -15,7 +15,6 @@
                         <form method="post" action="{{url('apartments')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-md-12"></div>
                                 <div class="form-group col-md-4">
                                     <label for="area">Площадь:</label>
                                     <input type="text" class="form-control" name="area" placeholder="Например: 50">
@@ -120,7 +119,6 @@
                                         @endforeach
                                     </ul>
                                 @endif
-                                <div class="col-md-12"></div>
                                 <div class="form-group col-md-4" style="margin-top:10px">
                                     <a href="/apartments" class="btn btn-dark">Назад</a>
                                     <button type="submit" class="btn btn-dark">Добавить</button>

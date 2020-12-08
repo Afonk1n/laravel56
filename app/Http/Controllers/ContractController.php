@@ -31,8 +31,7 @@ class ContractController extends Controller
         $apartments = Apartment::all();
         $services = Service::all();
         $statuses = Status::all();
-        $contracts = Contract::all();
-        return view('editor/contract/create',compact('contracts','services','statuses','apartments'));
+        return view('editor/contract/create',compact('services','statuses','apartments'));
     }
 
     /**
@@ -44,8 +43,8 @@ class ContractController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'transaction' => 'required|integer|min:1000|max:999999999',
-            'servicecost' => 'required|integer|min:100|max:999999',
+            'transaction' => 'required|between:0,999999999.99',
+            'servicecost' => 'required|between:0,999999.99',
             'dealarea' => 'required|integer|min:10|max:50000',
         ]);
         $contract = new Contract();
@@ -79,7 +78,11 @@ class ContractController extends Controller
      */
     public function edit($id)
     {
-        //
+        $apartments = Apartment::all();
+        $services = Service::all();
+        $statuses = Status::all();
+        $contract = Contract::find($id);
+        return view('editor/contract/edit',compact('contract','services','statuses','apartments'));
     }
 
     /**
@@ -91,7 +94,21 @@ class ContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'transaction' => 'required|between:0,999999999.99',
+            'servicecost' => 'required|between:0,999999.99',
+            'dealarea' => 'required|integer|min:10|max:50000',
+        ]);
+        $contract = new Contract();
+        $contract->transaction = $request->get('transaction');
+        $contract->servicecost = $request->get('servicecost');
+        $contract->dealdate = $request->get('dealdate');
+        $contract->dealarea = $request->get('dealarea');
+        $contract->service_id = $request->get('service_id');
+        $contract->apartment_id = $request->get('apartment_id');
+        $contract->status_id = $request->get('status_id');
+        $contract->save();
+        return redirect('contracts')->with('Запись добавлена');
     }
 
     /**

@@ -20,7 +20,7 @@
                                                         {{ session('status') }}
                                                     </div>
                                                 @endif
-                                        <table class="table table-striped table-bordered">
+                                        <table class="table table-striped table-borderless user-table">
                                             @if($user->photo)
                                                 <div class="text-center">
                                                     <img class="img-fluid rounded mb-2" width="300" height="300" src="{{url('uploads/'.$user->photo)}}" alt="{{$user->photo}}">

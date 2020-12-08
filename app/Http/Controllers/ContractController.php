@@ -7,6 +7,8 @@ use App\Contract;
 use App\Service;
 use App\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ContractController extends Controller
 {
@@ -65,7 +67,7 @@ class ContractController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
     }
@@ -78,11 +80,14 @@ class ContractController extends Controller
      */
     public function edit($id)
     {
-        $apartments = Apartment::all();
-        $services = Service::all();
-        $statuses = Status::all();
         $contract = Contract::find($id);
-        return view('editor/contract/edit',compact('contract','services','statuses','apartments'));
+        if($contract->status_id==2){
+            $contract->status_id=3;
+        }else{
+            $contract->status_id=2;
+        }
+        $contract->save();
+        return redirect('contracts');
     }
 
     /**
@@ -94,21 +99,10 @@ class ContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'transaction' => 'required|between:0,999999999.99',
-            'servicecost' => 'required|between:0,999999.99',
-            'dealarea' => 'required|integer|min:10|max:50000',
-        ]);
-        $contract = new Contract();
+        $contract = Contract::find($id);
         $contract->transaction = $request->get('transaction');
-        $contract->servicecost = $request->get('servicecost');
-        $contract->dealdate = $request->get('dealdate');
-        $contract->dealarea = $request->get('dealarea');
-        $contract->service_id = $request->get('service_id');
-        $contract->apartment_id = $request->get('apartment_id');
-        $contract->status_id = $request->get('status_id');
         $contract->save();
-        return redirect('contracts')->with('Запись добавлена');
+        return redirect('contracts');
     }
 
     /**

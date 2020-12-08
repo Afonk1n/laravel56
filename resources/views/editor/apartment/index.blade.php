@@ -24,7 +24,7 @@
                                                     <img width="600" height="400" src="{{url('uploads/'.$apartment->image)}}" alt="{{$apartment->image}}">
                                                 </div>
                                             @endif
-                                        <table class="table table-striped table-bordered">
+                                        <table class="table table-striped offer-table">
                                             <tbody>
                                                 <tr>
                                                     <td>№</td>

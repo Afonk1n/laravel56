@@ -38,7 +38,7 @@
                                     <td>{{$contract->service->name}}</td>
                                     <td>Ул.{{$contract->apartment->street->name}},д.{{$contract->apartment->number}}</td>
                                     <td>{{$contract->status->name}}</td>
-                                    <td align="right"><a href="{{action('ContractController@edit', $contract['id'])}}" class="btn btn-dark">Редактировать</a></td>
+                                    <td align="right"><a href="{{action('ContractController@edit', $contract['id'])}}" class="btn btn-dark">Сменить статус</a></td>
                                     <td align="left">
                                         <form action="{{action('ContractController@destroy', $contract['id'])}}" method="post">
                                             @csrf
@@ -50,7 +50,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                            <a href="@if (auth()->user()->role > 1) /admin @else /editor @endif" class="btn btn-dark">Назад</a>
+                        <a href="@if (auth()->user()->role > 1) /admin @else /editor @endif" class="btn btn-dark">Назад</a>
                         <a href="/contracts/create" class="btn btn-dark">Добавить запись</a>
                     </div>
                 </div>

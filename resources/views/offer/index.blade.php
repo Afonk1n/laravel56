@@ -19,7 +19,7 @@
                                                 <img class="img-fluid rounded" width="500" height="300" src="{{url('uploads/'.$apartment->image)}}" alt="{{$apartment->image}}">
                                             </div>
                                         @endif
-                        <table class="table table-striped offer-table col-md-6">
+                        <table class="table table-striped col-md-6 offer-table">
                             <tbody>
                                         <tr>
                                             <td>Адрес</td>

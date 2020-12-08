@@ -5,14 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Добавление контракта</div>
+                    <div class="card-header">Редактирование контракта</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="post" action="{{url('contracts')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{action('ContractController@update', $id)}}">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-4">
@@ -69,7 +69,7 @@
                                 @endif
                                 <div class="form-group col-md-4" style="margin-top:10px">
                                     <a href="/contracts" class="btn btn-dark">Назад</a>
-                                    <button type="submit" class="btn btn-dark">Добавить</button>
+                                    <button type="submit" class="btn btn-dark">Сохранить</button>
                                 </div>
                             </div>
                         </form>

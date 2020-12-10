@@ -3,7 +3,7 @@
 @section('content')
     <div class="container h-100">
         <div class="row justify-content-center">
-            <h1 class="text-dark">Aroom - нечто большее, чем просто агенство недвижимости</h1>
+            <h1 class="text-dark text-center">Aroom - нечто большее, чем просто агенство недвижимости</h1>
             <h1 class="text-dark">Мы можем предоставить вам</h1>
             <table class="table index-table my-auto">
                 <tbody>

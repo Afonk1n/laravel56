@@ -39,7 +39,7 @@ Route::resource('storeynumbers', 'StoreynumberController')->middleware('checkrol
 
 Route::resource('apartments', 'ApartmentController')->middleware('checkroleeditor');
 
-Route::resource('contracts', 'ContractController');
+Route::resource('contracts', 'ContractController')->middleware('checkroleeditor');
 
 Route::resource('users', 'UserController')->middleware('checkroleeditor');
 

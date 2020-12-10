@@ -15,10 +15,11 @@
                             <div class="card-body">
                                     <div class="row offer-block" onclick="location.href='{{action('OfferController@show', $apartment['id'])}}'">
                                         @if($apartment->image)
-                                            <div class="text-center col-md-6">
+                                            <div class="text-center w-50 col-md-6">
                                                 <img class="img-fluid rounded" width="500" height="300" src="{{url('uploads/'.$apartment->image)}}" alt="{{$apartment->image}}">
                                             </div>
                                         @endif
+                                        <div class="container my-auto w-50">
                         <table class="table table-striped col-md-6 offer-table">
                             <tbody>
                                         <tr>
@@ -43,6 +44,7 @@
                                         </tr>
                             </tbody>
                         </table>
+                                        </div>
                                     </div>
                                     </div>
                             </div>

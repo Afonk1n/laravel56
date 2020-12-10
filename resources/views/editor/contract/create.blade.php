@@ -67,7 +67,7 @@
                                         @endforeach
                                     </ul>
                                 @endif
-                                <div class="form-group col-md-4" style="margin-top:10px">
+                                <div class="container" style="margin-top:10px">
                                     <a href="/contracts" class="btn btn-dark">Назад</a>
                                     <button type="submit" class="btn btn-dark">Добавить</button>
                                 </div>

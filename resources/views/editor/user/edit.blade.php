@@ -90,9 +90,9 @@
                                         @endforeach
                                     </ul>
                                 @endif
-                                <div class="form-group col-md-4" style="margin-top:10px">
-                                    <a href="/users" class="btn btn-dark m-1 d-inline-block">Назад</a>
-                                    <button type="submit" class="btn btn-dark m-1 d-inline-block">Сохранить</button>
+                                <div class="container" style="margin-top:10px">
+                                    <a href="/users" class="btn btn-dark">Назад</a>
+                                    <button type="submit" class="btn btn-dark">Сохранить</button>
                                 </div>
                             </div>
                         </form>

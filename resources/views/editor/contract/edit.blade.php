@@ -49,7 +49,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="container col-md-4">
                                     <label for="status_id">Статус сделки:</label>
                                     <select class="form-control" name="status_id">
                                         <option disabled>Выберите район</option>
@@ -67,9 +67,9 @@
                                         @endforeach
                                     </ul>
                                 @endif
-                                <div class="form-group col-md-4" style="margin-top:10px">
-                                    <a href="/contracts" class="btn btn-dark m-1 d-inline-block">Назад</a>
-                                    <button type="submit" class="btn btn-dark m-1 d-inline-block">Сохранить</button>
+                                <div class="container" style="margin-top:10px">
+                                    <a href="/contracts" class="btn btn-dark">Назад</a>
+                                    <button type="submit" class="btn btn-dark">Сохранить</button>
                                 </div>
                             </div>
                         </form>

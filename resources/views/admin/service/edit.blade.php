@@ -29,7 +29,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12"></div>
-                                <div class="form-group col-md-12" style="margin-top:10px">
+                                <div class="container" style="margin-top:10px">
                                     <a href="/services" class="btn btn-dark">Назад</a>
                                     <button type="submit" class="btn btn-dark">Сохранить</button>
                                 </div>
